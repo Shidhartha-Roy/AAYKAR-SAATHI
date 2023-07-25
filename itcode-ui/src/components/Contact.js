@@ -23,7 +23,7 @@ const Contact = () => {
     
   });
   const [button, setButton] = useState({
-    message: "Send Message"
+    message: "Send Message",
   })
 
   const sendEmail = (e) => {
