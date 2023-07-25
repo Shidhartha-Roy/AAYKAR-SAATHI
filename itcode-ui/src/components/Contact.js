@@ -55,6 +55,17 @@ const Contact = () => {
             setButton({
               message: "Message Not Sent"
             })
+            setTimeout(() => {
+              setButton({
+                message: "Send Message"
+              });
+              setFormData({
+                from_name: "",
+                from_email: "",
+                subject: "",
+                message: "",
+              })
+            }, 3000);
         });
     };
 
