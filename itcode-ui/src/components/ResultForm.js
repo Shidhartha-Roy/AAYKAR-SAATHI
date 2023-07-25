@@ -56,12 +56,16 @@ const ResultForm = () => {
           onSubmit={goBack}
         >
           <h4 className="contentTitle font-bold text-2xl" style={{textAlign: "left"}}>CODE INFO</h4>
-          <div className="formGroup" style={{ display: "inline-block" }}>
+          <div className="formGroup">
+            <div className="flex justify-start ml-2">
+              <label className="text-green-400">Tax Code</label>
+            </div>
+            
             <input
               type="text"
               className="formControl"
               value={taxCode.id}
-              style={{width: "28rem"}}
+              style={{width: "28rem", borderRadius: "10px"}}
               id="code"
               name="req_code"
               placeholder="TAX CODE"
@@ -70,9 +74,12 @@ const ResultForm = () => {
             />
           </div>
           <div className="formGroup">
+          <div className="flex justify-start ml-2">
+              <label className="text-green-400">Tax Description</label>
+            </div>
             <textarea
-              className="formControl"
-              style={{width: "28rem"}}
+              className="formControl tracking-widest text-lg"
+              style={{width: "28rem", borderRadius: "10px"}}
               value={taxCode.description}
               name="description"
               id="codeDescription"
@@ -83,10 +90,13 @@ const ResultForm = () => {
             ></textarea>
           </div>
           <div className="formGroup" style={{ display: "inline-block" }}>
+          <div className="flex justify-start ml-2">
+              <label className="text-green-400">Documentation Link</label>
+            </div>
             <input
               type="text"
               className="formControl"
-              style={{width: "28rem"}}
+              style={{width: "28rem", borderRadius: "10px"}}
               value={taxCode.doclink}
               id="link"
               name="doc_link"
@@ -96,10 +106,13 @@ const ResultForm = () => {
             />
           </div>
           <div className="col-12 formGroup">
+          <div className="flex justify-start ml-2">
+              <label className="text-green-400">Applicable For</label>
+            </div>
             <input
               type="text"
               className="formControl"
-              style={{width: "28rem"}}
+              style={{width: "28rem", borderRadius: "10px"}}
               value={taxCode.applicable}
               id="applicable"
               name="applicable_for"

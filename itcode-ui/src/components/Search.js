@@ -45,6 +45,8 @@ const Search = () => {
     { value: "TTB", label: "TTB"},
     { value: "C", label: "C"},
     { value: "CCD", label: "CCD"},
+    { value: "CCC", label: "CCC"},
+    { value: "TTA", label: "TTA"},
   ]
 
 
