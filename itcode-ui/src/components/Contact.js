@@ -26,6 +26,20 @@ const Contact = () => {
     message: "Send Message",
   })
 
+  const reviveForm = () =>{
+    setTimeout(() => {
+      setButton({
+        message: "Send Message"
+      });
+      setFormData({
+        from_name: "",
+        from_email: "",
+        subject: "",
+        message: "",
+      })
+    }, 3000);
+  }
+
   const sendEmail = (e) => {
       e.preventDefault();
       setButton({
@@ -34,38 +48,17 @@ const Contact = () => {
       
   
       emailjs.sendForm('service_mdrpn3m', 'template_m04djxh', form.current, 'xz44QJhu_ypIQkas_')
-        .then((result) => {
-            console.log(result.text);
+        .then(() => {
             setButton({
               message: "Message Sent"
             })
-            setTimeout(() => {
-              setButton({
-                message: "Send Message"
-              });
-              setFormData({
-                from_name: "",
-                from_email: "",
-                subject: "",
-                message: "",
-              })
-            }, 3000);
+            reviveForm();
         }, (error) => {
             console.log(error.text);
             setButton({
               message: "Message Not Sent"
             })
-            setTimeout(() => {
-              setButton({
-                message: "Send Message"
-              });
-              setFormData({
-                from_name: "",
-                from_email: "",
-                subject: "",
-                message: "",
-              })
-            }, 3000);
+            reviveForm();
         });
     };
 
