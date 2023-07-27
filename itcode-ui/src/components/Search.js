@@ -20,7 +20,7 @@ const Search = () => {
 
 
     const searchTax = (e) => {
-      if(taxCode.code != ""){
+      if(taxCode.code !== ""){
         e.preventDefault();
         const searchValue = taxCode.code + taxCode.section
         navigate(`/result/${searchValue}`)
