@@ -2,6 +2,9 @@ package com.sid.itcodeapi.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -11,14 +14,22 @@ public class SecurityConfig {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
-            public void addCorsMappings(CorsRegistry registry){
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedMethods("*")
-                        .allowedHeaders("*")
                         .allowedOrigins("http://localhost:3000");
-
             }
         };
+    }
+
+    //This tells Spring security that a global cors mapping has been done,and it has to send the request directly to the dispatcher servlet
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+
+        http.cors(Customizer.withDefaults());
+
+        return http.build();
     }
 
 }
