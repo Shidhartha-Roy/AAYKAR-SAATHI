@@ -38,6 +38,7 @@ const Search = () => {
     { value: "80", label: "80"},
     { value: "139", label: "139"},
     { value: "128", label: "128"},
+    { value: "69", label: "69"},
 
   ]
 
