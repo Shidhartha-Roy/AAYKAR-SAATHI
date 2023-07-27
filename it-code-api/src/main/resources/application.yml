@@ -10,3 +10,7 @@ spring:
       hibernate:
         format_sql: false
     show-sql: true
+  security:
+    user:
+      name: jack
+      password: shukla
