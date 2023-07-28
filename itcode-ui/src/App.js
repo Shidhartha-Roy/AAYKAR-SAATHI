@@ -6,8 +6,8 @@ import Search from './components/Search';
 import Contact from './components/Contact';
 import About from './components/About';
 import ResultForm from './components/ResultForm';
-import Services from './components/Services';
-import Login from './components/Login';
+
+
 
 function App() {
   return (
@@ -20,8 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/result/:code" element={<ResultForm />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/login"  element={<Login />} />
+        
       </Routes>
       </BrowserRouter>
     </div>

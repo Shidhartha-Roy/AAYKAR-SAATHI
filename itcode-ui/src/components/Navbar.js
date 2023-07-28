@@ -26,17 +26,14 @@ const Navbar = () => {
             <NavLink to="/" activeclassname="active" className="hover:text-green-500">
               Home
             </NavLink>
-            <NavLink to="/services" activeclassname="active" className="hover:text-green-500">
-              Services
+            <NavLink to="/search" activeclassname="active" className="hover:text-green-500">
+              Search
             </NavLink>
             <NavLink to="/about" activeclassname="active" className="hover:text-green-500">
               About
             </NavLink>
             <NavLink to="/contact" activeclassname="active" className="hover:text-green-500">
               Contact
-            </NavLink>
-            <NavLink to="/login" activeclassname="active" className="hover:text-green-500">
-              Login
             </NavLink>
         </div>
       </div>
