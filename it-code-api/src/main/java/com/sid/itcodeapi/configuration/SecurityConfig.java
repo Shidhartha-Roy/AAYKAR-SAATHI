@@ -20,6 +20,17 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(11);
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer(){
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("*").allowedOrigins("http://localhost:3000");
+            }
+        };
+    }
+
 
 
     //This tells Spring security that a global cors mapping has been done,and it has to send the request directly to the dispatcher servlet
