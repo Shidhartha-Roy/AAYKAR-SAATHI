@@ -35,6 +35,9 @@ const Navbar = () => {
             <NavLink to="/contact" activeclassname="active" className="hover:text-green-500">
               Contact
             </NavLink>
+            <NavLink to="/login" activeclassname="active" className="hover:text-green-500">
+              Login
+            </NavLink>
         </div>
       </div>
     </nav>
