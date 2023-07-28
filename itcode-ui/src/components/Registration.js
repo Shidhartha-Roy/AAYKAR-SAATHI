@@ -19,6 +19,10 @@ const Registration = () => {
         confirmPassword: "",
     })
 
+    const [checkEmail, setCheckEmail] = useState({
+      message: "",
+    })
+
     const handleInputChange = (e) =>{
         const value = e.target.value;
     setUser({...user, [e.target.name]: value});
@@ -33,7 +37,11 @@ const Registration = () => {
             navigate("/login");
         })
         .catch((error) => {
-            console.log(error);
+          if(error.status=500){
+            setCheckEmail({
+              message: "EMAIL ALREADY EXISTS",
+            })
+         }
         })
     }
 
@@ -57,6 +65,7 @@ const Registration = () => {
         >
           
           <div className="formGroup">
+            <div className="text-red-500 flex justify-start ml-2">{checkEmail.message}</div>
             <div className="flex justify-start ml-2">
               <label className="text-green-400">First Name</label>
             </div>

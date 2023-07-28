@@ -50,9 +50,14 @@ const Home = () => {
       className="flex justify-end mr-10 -mt-80">
         <img src={landing} className="max-w-xl" alt='Landing Page'/>
       </motion.div>
-      <div className="pl-5">
+      <motion.div 
+      ref={ref}
+      initial={{ x: "10vw", opacity: 0 }}
+      animate={inView ? { x: 0, opacity: 1 } : { x: "10vw", opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="pl-5 flex justify-start">
       <button onClick={tryService} className="h-9 pb-3 pl-3 pr-3 pt-1 -my-24 flex justify-start  tracking-wider text-xl text-white hover:text-white  font-bold transition-colors duration-150 bg-red-800 rounded-xl hover:bg-green-500 ">AAYKAR SAATHI</button>
-      </div>
+      </motion.div>
     </div>
   )
 }

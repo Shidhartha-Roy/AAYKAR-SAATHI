@@ -5,4 +5,6 @@ import com.sid.itcodeapi.model.UserModel;
 
 public interface UserService {
     UserEntity registerUser(UserModel userModel);
+
+
 }
