@@ -11,9 +11,6 @@ const About = () => {
     triggerOnce: true,
   });
 
-  
-
-
   return (
     <div
      className="text-white font-semibold p-0 font-mono"
