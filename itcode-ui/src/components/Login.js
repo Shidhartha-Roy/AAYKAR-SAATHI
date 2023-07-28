@@ -8,8 +8,8 @@ const Login = () => {
 
   return (
     <div className="text-white font-semibold p-0 font-mono">
-        Be a part of the Family<br />
-        <div className="font-bold text-3xl text-green-600 tracking-tight">REGISTER</div>
+        Enjoy the Full Services<br />
+        <div className="font-bold text-3xl text-green-600 tracking-tight">LOGIN</div>
         <div className="flex flex-row h-screen items-center justify-center  font-mono mr-10">
         <div className="text-white flex items-center -mt-16 justify-center font-semibold ">
           <form
