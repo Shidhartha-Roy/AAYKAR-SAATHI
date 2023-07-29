@@ -1,10 +1,38 @@
 import React, { useRef } from 'react'
 import { inView } from 'framer-motion';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import UserService from '../services/UserService';
 
 const Login = () => {
 
+    const navigate = useNavigate();
+
+    const [loginDetails, setLoginDetails] = useState({
+      email: "",
+      password: "",
+    })
+
     const form = useRef();
+
+    const handleInputChange = (e) =>{
+      e.preventDefault();
+      const value = e.target.value;
+      setLoginDetails({...loginDetails, [e.target.name]: value});
+    }
+
+    const handleSubmit = (e) =>{
+      console.log(loginDetails.email + " " + loginDetails.password)
+      e.preventDefault();
+      UserService.loginUser(loginDetails)
+      .then(() => {
+        console.log("Welcome");
+        navigate("/search");
+    })
+    .catch((error) => {
+      console.log("Login Details are Faulty")
+    })
+    }
 
   return (
     <div className="text-white font-semibold p-0 font-mono">
@@ -20,7 +48,7 @@ const Login = () => {
           initial={{ x: "-10vw", opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-        //   onSubmit={goBack}
+          onSubmit={handleSubmit}
         >
           
           <div className="formGroup">
@@ -31,10 +59,11 @@ const Login = () => {
             <input
               type="text"
               className="formControl"
-            //   value={taxCode.id}
+              value={loginDetails.email}
+              onChange={handleInputChange}
               style={{width: "28rem", borderRadius: "10px"}}
               id="code"
-              name="req_code"
+              name="email"
             
               required
             />
@@ -48,9 +77,10 @@ const Login = () => {
               type="password"
               className="formControl"
               style={{width: "28rem", borderRadius: "10px"}}
-            //   value={taxCode.applicable}
+              value={loginDetails.password}
+              onChange={handleInputChange}
               id="applicable"
-              name="applicable_for"
+              name="password"
               required
               
             />

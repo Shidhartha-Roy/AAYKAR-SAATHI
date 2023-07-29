@@ -2,11 +2,15 @@ package com.sid.itcodeapi.controller;
 
 import com.sid.itcodeapi.entity.UserEntity;
 import com.sid.itcodeapi.model.ItcodeModel;
+import com.sid.itcodeapi.model.UserLoginModel;
 import com.sid.itcodeapi.model.UserModel;
 import com.sid.itcodeapi.services.ItcodeService;
 import com.sid.itcodeapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +21,8 @@ public class ITcodeController {
     private ItcodeService itcodeService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
     public ITcodeController(ItcodeService itcodeService) {
         this.itcodeService = itcodeService;
@@ -34,10 +40,25 @@ public class ITcodeController {
     @PostMapping("/register")
     public UserEntity registerUser(@RequestBody UserModel userModel){
 
-        return userService.registerUser(userModel);
+        UserEntity user = userService.registerUser(userModel);
+
+        return user;
 
 
     }
+
+    @PostMapping("/login")
+    public UserEntity loginUser(@RequestBody UserLoginModel userLoginModel){
+//        try{
+            return userService.loginUser(userLoginModel);
+
+//        }
+//        catch (UsernameNotFoundException | IllegalArgumentException e){
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+//        }
+    }
+
+
 
 
 }
