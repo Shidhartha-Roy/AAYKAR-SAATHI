@@ -136,6 +136,16 @@ textarea {
   color: #03b979;
 }
 
+.openMenu,
+.closeMenu {
+  
+  transition: transform 0.5s ease-in-out;
+}
+
+.closeMenu {
+  transform: rotate(180deg);
+  
+}
 
 
 

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import UserService from '../services/UserService';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Login = () => {
 
@@ -40,7 +41,8 @@ const Login = () => {
       .then((response) => {
         const token = response.headers.get('Authorization');
         if(token){
-          navigate("/search");
+          Cookies.set('authToken', token, {expires: 1});
+          navigate("/services");
         }
         else{
           setCheckCred({

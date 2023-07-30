@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import landing from "../images/landing-image.png"
 import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer'
-
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
@@ -15,7 +15,15 @@ const Home = () => {
 
   const tryService = (e) => {
     e.preventDefault();
-     navigate("/search")
+    const token = Cookies.get('authToken');
+    console.log(token);
+    if(token){
+      navigate("/services");
+    }
+    else{
+      navigate("/login")
+    }
+    
   }
 
 

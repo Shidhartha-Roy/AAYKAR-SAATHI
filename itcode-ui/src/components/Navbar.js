@@ -26,9 +26,6 @@ const Navbar = () => {
             <NavLink to="/" activeclassname="active" className="hover:text-green-500">
               Home
             </NavLink>
-            <NavLink to="/search" activeclassname="active" className="hover:text-green-500">
-              Search
-            </NavLink>
             <NavLink to="/about" activeclassname="active" className="hover:text-green-500">
               About
             </NavLink>
