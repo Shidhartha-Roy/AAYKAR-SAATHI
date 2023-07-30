@@ -15,6 +15,10 @@ const Login = () => {
       password: "",
     })
 
+    const [checkCred, setCheckCred] = useState({
+      message: "",
+    })
+
     const form = useRef();
 
     const handleInputChange = (e) =>{
@@ -25,27 +29,32 @@ const Login = () => {
 
     const handleSubmit = (e) =>{
       e.preventDefault();
-      // const hashedPassword = bcrypt.hashSync(loginDetails.password, 11);
+      const hashedPassword = bcrypt.hashSync(loginDetails.password, 11);
       
-      //const loginData = {
-      //  email: loginDetails.email,
-      //  passwordHash: loginDetails.password,
-     // }
+      const loginData = {
+       email: loginDetails.email,
+       passwordHash: hashedPassword,
+     }
 
       UserService.loginUser(loginDetails)
       .then((response) => {
         const token = response.headers.get('Authorization');
         if(token){
-          // console.log("JWT Token Received: ", token);
           navigate("/search");
         }
         else{
-          console.log("Login failed");
+          setCheckCred({
+            message: "LOGIN DENIED FROM SERVER",
+          })
         }
         
     })
     .catch((error) => {
-      console.log(error)
+      if(error.response.data === "Invalid credentials"){
+        setCheckCred({
+          message: "CHECK YOUR CREDENTIALS",
+        })
+      }
     })
     }
 
@@ -67,6 +76,7 @@ const Login = () => {
         >
           
           <div className="formGroup">
+          <div className="text-red-500 flex justify-start ml-2">{checkCred.message}</div>
             <div className="flex justify-start ml-2">
               <label className="text-green-400">Username/Email</label>
             </div>
@@ -85,6 +95,7 @@ const Login = () => {
           </div>
           
           <div className="col-12 formGroup">
+          
           <div className="flex justify-start ml-2">
               <label className="text-green-400">Password</label>
             </div>

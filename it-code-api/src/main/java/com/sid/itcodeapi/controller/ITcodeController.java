@@ -45,11 +45,15 @@ public class ITcodeController {
 
     //Registering User API
     @PostMapping("/register")
-    public UserEntity registerUser(@RequestBody UserModel userModel){
+    public ResponseEntity<?> registerUser(@RequestBody UserModel userModel){
+        try {
+            UserEntity user = userService.registerUser(userModel);
 
-        UserEntity user = userService.registerUser(userModel);
-
-        return user;
+            return ResponseEntity.ok(user);
+        }
+        catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email Already Exists");
+        }
 
 
     }

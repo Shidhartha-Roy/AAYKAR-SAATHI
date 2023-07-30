@@ -2,6 +2,7 @@ import React, { useRef,useState } from 'react'
 import { inView } from 'framer-motion';
 import { NavLink, useNavigate } from 'react-router-dom';
 import UserService from '../services/UserService';
+import bcrypt from 'bcryptjs';
 
 const Registration = () => {
     const form = useRef();
@@ -30,18 +31,30 @@ const Registration = () => {
     }
 
     const handleSubmit = (e) =>{
-      console.log(user.password);
+      const hashedPassword = bcrypt.hashSync(user.password, 11);
+      const userData = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        password: hashedPassword,
+      }
+      console.log(userData.firstname+" "+userData.lastname+" "+userData.password)
         e.preventDefault();
-        UserService.saveUser(user)
+        UserService.saveUser(userData)
         .then(() => {
             console.log("User Registered");
             navigate("/login");
         })
         .catch((error) => {
-          if(error.status=500){
+          if(error.response.data === "Email Already Exists"){
             setCheckEmail({
-              message: "EMAIL ALREADY EXISTS",
+              message: "EMAIL ALREADY Do EXISTS",
             })
+         }
+         else{
+          setCheckEmail({
+            message: "SOME OTHER ERROR",
+          })
          }
         })
     }
