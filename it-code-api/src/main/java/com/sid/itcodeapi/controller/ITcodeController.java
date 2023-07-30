@@ -6,12 +6,19 @@ import com.sid.itcodeapi.model.UserLoginModel;
 import com.sid.itcodeapi.model.UserModel;
 import com.sid.itcodeapi.services.ItcodeService;
 import com.sid.itcodeapi.services.UserService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Key;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/aaykarsaathi/")
@@ -47,15 +54,37 @@ public class ITcodeController {
 
     }
 
-    @PostMapping("/login")
-    public UserEntity loginUser(@RequestBody UserLoginModel userLoginModel){
-//        try{
-            return userService.loginUser(userLoginModel);
+//    private final String jwtSecret = "this_is_a_testing_secret_key";
+    private final long jwtExpirationMs = 86400000;
 
-//        }
-//        catch (UsernameNotFoundException | IllegalArgumentException e){
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-//        }
+    private String generateJwtToken(UserEntity user) {
+        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        Claims claims = Jwts.claims().setSubject(user.getEmail());
+
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + jwtExpirationMs);
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(expiration)
+                .signWith(key)
+                .compact();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody UserLoginModel userLoginModel){
+        try{
+            UserEntity user =  userService.loginUser(userLoginModel.getEmail(), userLoginModel.getPassword());
+
+            String token = generateJwtToken(user);
+
+            return ResponseEntity.ok().header("Authorization", "Bearer "+token).build();
+        }
+        catch (UsernameNotFoundException | IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        }
     }
 
 

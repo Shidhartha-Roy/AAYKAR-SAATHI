@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class SecurityConfig {
-    @Bean
-    public PasswordEncoder encoder(){
-        return new BCryptPasswordEncoder(11);
-    }
+//    @Bean
+//    public PasswordEncoder encoder(){
+//        return new BCryptPasswordEncoder(11);
+//    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer(){
@@ -26,7 +26,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedMethods("*").allowedOrigins("http://localhost:3000");
+                        .allowedMethods("*").allowedOrigins("http://localhost:3000").exposedHeaders("Authorization");
             }
         };
     }

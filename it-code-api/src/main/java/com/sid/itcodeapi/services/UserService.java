@@ -8,5 +8,5 @@ public interface UserService {
     UserEntity registerUser(UserModel userModel);
 
 
-    UserEntity loginUser(UserLoginModel userLoginModel);
+    UserEntity loginUser(String email, String password);
 }

@@ -8,8 +8,8 @@ class UserService {
         return axios.post(IT_USER_BASE_API_URL+"/register", user);
     }
 
-    loginUser(loginDetails){
-        return axios.post(IT_USER_BASE_API_URL+"/login", loginDetails);
+    loginUser(loginData){
+        return axios.post(IT_USER_BASE_API_URL+"/login", loginData);
     }
 
     

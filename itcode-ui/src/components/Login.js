@@ -3,6 +3,8 @@ import { inView } from 'framer-motion';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import UserService from '../services/UserService';
+import bcrypt from 'bcryptjs';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -22,15 +24,28 @@ const Login = () => {
     }
 
     const handleSubmit = (e) =>{
-      console.log(loginDetails.email + " " + loginDetails.password)
       e.preventDefault();
+      // const hashedPassword = bcrypt.hashSync(loginDetails.password, 11);
+      
+      //const loginData = {
+      //  email: loginDetails.email,
+      //  passwordHash: loginDetails.password,
+     // }
+
       UserService.loginUser(loginDetails)
-      .then(() => {
-        console.log("Welcome");
-        navigate("/search");
+      .then((response) => {
+        const token = response.headers.get('Authorization');
+        if(token){
+          // console.log("JWT Token Received: ", token);
+          navigate("/search");
+        }
+        else{
+          console.log("Login failed");
+        }
+        
     })
     .catch((error) => {
-      console.log("Login Details are Faulty")
+      console.log(error)
     })
     }
 

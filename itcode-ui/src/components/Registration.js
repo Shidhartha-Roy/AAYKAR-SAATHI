@@ -30,6 +30,7 @@ const Registration = () => {
     }
 
     const handleSubmit = (e) =>{
+      console.log(user.password);
         e.preventDefault();
         UserService.saveUser(user)
         .then(() => {

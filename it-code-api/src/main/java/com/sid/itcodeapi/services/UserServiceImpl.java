@@ -6,7 +6,7 @@ import com.sid.itcodeapi.model.UserModel;
 import com.sid.itcodeapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserEntity registerUser(UserModel userModel) {
@@ -30,20 +30,21 @@ public class UserServiceImpl implements UserService{
         user.setEmail(userModel.getEmail());
         user.setFirstname(userModel.getFirstname());
         user.setLastname(userModel.getLastname());
-        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
-
+//        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
+        user.setPassword(userModel.getPassword());
         userRepository.save(user);
         return user;
     }
 
     @Override
-    public UserEntity loginUser(UserLoginModel userLoginModel) {
-        String email = userLoginModel.getEmail();
+    public UserEntity loginUser(String email, String password) {
+
         UserEntity user = userRepository.findByEmail(email);
         if(user == null){
             throw new UsernameNotFoundException("User not found");
         }
-//        if(!passwordEncoder.matches(user.getPassword())){
+
+//        if(!passwordEncoder.matches(password, user.getPassword())){
 //            throw new IllegalArgumentException("Invalid password");
 //        }
 
