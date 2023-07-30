@@ -38,7 +38,6 @@ const Registration = () => {
         email: user.email,
         password: hashedPassword,
       }
-      console.log(userData.firstname+" "+userData.lastname+" "+userData.password)
         e.preventDefault();
         UserService.saveUser(userData)
         .then(() => {
