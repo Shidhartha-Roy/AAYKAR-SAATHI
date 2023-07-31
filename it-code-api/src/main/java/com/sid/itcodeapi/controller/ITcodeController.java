@@ -58,31 +58,15 @@ public class ITcodeController {
 
     }
 
-//    private final String jwtSecret = "this_is_a_testing_secret_key";
-    private final long jwtExpirationMs = 86400000;
 
-    private String generateJwtToken(UserEntity user) {
-        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-        Claims claims = Jwts.claims().setSubject(user.getEmail());
-
-        Date now = new Date();
-        Date expiration = new Date(now.getTime() + jwtExpirationMs);
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(expiration)
-                .signWith(key)
-                .compact();
-    }
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginModel userLoginModel){
         try{
             UserEntity user =  userService.loginUser(userLoginModel.getEmail(), userLoginModel.getPassword());
 
-            String token = generateJwtToken(user);
+            String token = userService.generateJwtToken(user);
 
             return ResponseEntity.ok().header("Authorization", "Bearer "+token).build();
         }

@@ -1,8 +1,8 @@
-import React,{ useRef, useState } from 'react'
+import React,{ useRef, useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer';
 import Select from 'react-select'
 import { useNavigate } from 'react-router-dom';
-
+import Cookies from 'js-cookie';
 
 const Search = () => {
 
@@ -18,12 +18,25 @@ const Search = () => {
       section: "",
     })
 
+    useEffect(() => {
+      const token = Cookies.get("authToken");
+      if(!token){
+        navigate("/login");
+      }
+    }, [])
+
+    const [message, setMessage] = useState("")
+
 
     const searchTax = (e) => {
       if(taxCode.code !== ""){
         e.preventDefault();
         const searchValue = taxCode.code + taxCode.section
         navigate(`/result/${searchValue}`)
+      }
+      else{
+        e.preventDefault();
+        setMessage("Please Make Selections")
       }
         
 
@@ -49,6 +62,10 @@ const Search = () => {
     { value: "TTA", label: "TTA"},
   ]
 
+  const goBack = () => {
+    navigate("/services");
+  }
+
 
   return (
     <div
@@ -67,6 +84,7 @@ const Search = () => {
         onSubmit={searchTax}
         >
       <div className="border border-solid p-5 -mt-16">
+      <div className="text-red-500 flex justify-start ml-2">{message}</div>
         <div className="p-2 flex flex-row justify-center">
           <label className="text-white mr-32 text-lg">Select Tax Code</label>
           <Select
@@ -105,7 +123,8 @@ const Search = () => {
           
           />
         </div>
-        <button className="bg-red-500 focus:bg-green-500 p-2 mt-5 mb-5 rounded-lg w-32">Search</button>
+        <button className="bg-green-400 focus:bg-green-500 p-2 mt-5 mb-5 rounded-lg w-32">Search</button>
+        <button className="bg-red-500 focus:bg-green-500 p-2 mt-5 mb-5 rounded-lg w-32 ml-5" onClick={goBack}>Back</button>
       </div>
         </form>
     </div>

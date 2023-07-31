@@ -16,7 +16,6 @@ const Home = () => {
   const tryService = (e) => {
     e.preventDefault();
     const token = Cookies.get('authToken');
-    console.log(token);
     if(token){
       navigate("/services");
     }

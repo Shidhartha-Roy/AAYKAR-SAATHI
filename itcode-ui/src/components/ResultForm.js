@@ -2,7 +2,7 @@ import { inView } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import ITservice from '../services/ITservice';
-
+import Cookies from 'js-cookie';
 
 const ResultForm = () => {
     const form = useRef();
@@ -21,6 +21,11 @@ const ResultForm = () => {
     })
 
     useEffect(() => {
+      const token = Cookies.get("authToken");
+      if(!token){
+        navigate("/login");
+      }
+
       const fetchData = async () => {
         try{
           const response = await ITservice.getCodeDataById(taxCode.id);

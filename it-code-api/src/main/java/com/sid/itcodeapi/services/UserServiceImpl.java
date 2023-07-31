@@ -3,10 +3,17 @@ package com.sid.itcodeapi.services;
 import com.sid.itcodeapi.entity.UserEntity;
 import com.sid.itcodeapi.model.UserModel;
 import com.sid.itcodeapi.repository.UserRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.security.Key;
+import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -15,6 +22,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    private final long jwtExpirationMs = 86400000;
 
     @Override
     public UserEntity registerUser(UserModel userModel) {
@@ -47,6 +56,23 @@ public class UserServiceImpl implements UserService{
         }
 
         return user;
+    }
+
+    @Override
+    public String generateJwtToken(UserEntity user) {
+        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        Claims claims = Jwts.claims().setSubject(user.getEmail());
+
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + jwtExpirationMs);
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(expiration)
+                .signWith(key)
+                .compact();
     }
 
 

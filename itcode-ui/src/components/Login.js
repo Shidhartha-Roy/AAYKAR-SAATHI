@@ -43,12 +43,14 @@ const Login = () => {
         if(token){
           Cookies.set('authToken', token, {expires: 1});
           navigate("/services");
+          window.location.reload("false")
         }
         else{
           setCheckCred({
             message: "LOGIN DENIED FROM SERVER",
           })
         }
+        
         
     })
     .catch((error) => {

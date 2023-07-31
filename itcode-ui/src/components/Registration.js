@@ -47,7 +47,7 @@ const Registration = () => {
         .catch((error) => {
           if(error.response.data === "Email Already Exists"){
             setCheckEmail({
-              message: "EMAIL ALREADY Do EXISTS",
+              message: "EMAIL ALREADY EXISTS",
             })
          }
          else{

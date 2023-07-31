@@ -9,4 +9,6 @@ public interface UserService {
 
 
     UserEntity loginUser(String email, String password);
+
+    String generateJwtToken(UserEntity user);
 }
