@@ -12,7 +12,7 @@ import Services from './components/Services';
 
 function App() {
   return (
-    <div className="App bg-black">
+    <div className="App">
       <BrowserRouter >
       <Navbar />
       <Routes >

@@ -5,6 +5,7 @@ import Modal from 'react-modal'
 import close from "../images/close.svg"
 import dev from "../images/devimage.png"
 import Cookies from 'js-cookie'
+import Navbar from './Navbar'
 
 
 const Services = () => {
@@ -14,7 +15,14 @@ const Services = () => {
   const backgroundStyle = {
     backgroundSize: "cover",
     backgroundPosition: "center",
-    width: "30rem",
+    
+    
+  }
+
+  const mobileMediaQuery = '@media (max-width: 108px)';
+  const mobileBackgroundStyle = {
+    ...backgroundStyle,
+    width: {mobileMediaQuery},
     
   }
 
@@ -58,30 +66,31 @@ const Services = () => {
 
   return (
     
+    //  <Navbar />
     <div
-     className="h-screen text-white font-semibold p-0 font-mono"
+     className="bg-black  lg:mt-auto h-screen text-white font-semibold p-0 font-mono"
      
      >
     Explore Our<br />
     <div className="font-bold text-3xl text-green-600 tracking-tight">SERVICES</div>
-    <div className="flex flex-row justify-center -ml-16">
+    <div className="lg:flex lg:flex-row justify-center lg:-ml-16">
     
     <div className=" text-white mt-40">
     <NavLink to="/search">
-     <div className="text-white bg-green-900 hover:bg-green-600 hover:text-yellow-200  text-4xl font-extrabold border border-solid border-black cursor-pointer h-60 ml-5 flex justify-start items-center rounded-xl" style={backgroundStyle} >
+     <div className="serviceCard text-white bg-green-900 hover:bg-green-600 hover:text-yellow-200  text-4xl font-extrabold border border-solid border-black cursor-pointer -mt-28 lg:mt-auto h-32 lg:h-60 ml-2 lg:ml-5 flex justify-start items-center rounded-xl" style={{ ...backgroundStyle}}  >
       <div className="ml-20 mt-2 flex">TAX CODE SEARCH</div>
      </div>
      </NavLink>
     </div>
     
-    <div className=" text-white mt-40 pl-5">
-     <div className="text-white bg-red-900 hover:bg-red-600 hover:text-green-300  text-4xl font-extrabold border border-solid border-black cursor-pointer h-60 ml-5 flex justify-start items-center rounded-xl" style={backgroundStyle} onClick={handleOpenServiceModal}>
-     <div className="ml-8 mt-2 flex">APPLICABLE DEDUCTIONS</div>
+    <div className=" text-white mt-5 lg:mt-40 pl-5">
+     <div className="serviceCard text-white bg-red-900 hover:bg-red-600 hover:text-green-300  text-4xl font-extrabold border border-solid border-black cursor-pointer h-36 lg:h-60 -ml-3 lg:ml-5 flex justify-start items-center rounded-xl" style={backgroundStyle} onClick={handleOpenServiceModal}>
+     <div className="ml-11 lg:ml-8 mt-2 flex">APPLICABLE DEDUCTIONS</div>
      </div>
     </div>
     </div>
     <div className="flex justify-center">
-    <div className="w-96 h-32  flex flex-col justify-center mt-12 -ml-5">
+    <div className="w-96 h-32  flex flex-col justify-center mt-20 lg:mt-12 -ml-5">
       <div className="text-lg">Got Ideas?</div>
       <NavLink to="/contact" ><div className="font-bold text-3xl text-yellow-400 tracking-tight cursor-pointer">
         Let Us Know
@@ -106,6 +115,7 @@ const Services = () => {
         </Modal>
     
     </div>
+    
     
   )
 }

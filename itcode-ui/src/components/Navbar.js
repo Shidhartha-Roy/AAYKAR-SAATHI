@@ -72,15 +72,15 @@ const Navbar = () => {
 
 
   return (
-    <nav className="sticky top-0">
-      <div className="max-w-screen-xl flex flex-wrap font-mono justify-between mx-auto p-4">
+    <nav className="sticky top-0 bg-black">
+      <div className="max-w-screen flex flex-wrap font-mono justify-between mx-auto p-4">
 
-        <NavLink to="/" className="flex -ml-24">
+        <NavLink to="/" className="flex ml-2">
           <img src={logo} className="h-8 mr-3" alt="Aaykar Saathi Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap  dark:text-green-500">AAYKAR SAATHI</span>
+          <span className="brand self-center text-2xl font-semibold whitespace-nowrap  dark:text-green-500">AAYKAR SAATHI</span>
         </NavLink>
         
-        <div className="-mr-20 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
+        <div className="routes mr-10 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
          
             <NavLink to="/" activeclassname="active" className="hover:text-green-500">
               Home

@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import Select from 'react-select'
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Navbar from './Navbar';
 
 const Search = () => {
 
@@ -18,12 +19,12 @@ const Search = () => {
       section: "",
     })
 
-    useEffect(() => {
-      const token = Cookies.get("authToken");
-      if(!token){
-        navigate("/login");
-      }
-    }, [])
+    // useEffect(() => {
+    //   const token = Cookies.get("authToken");
+    //   if(!token){
+    //     navigate("/login");
+    //   }
+    // }, [])
 
     const [message, setMessage] = useState("")
 
@@ -68,16 +69,18 @@ const Search = () => {
 
 
   return (
+    
+      
     <div
-     className="text-white font-semibold p-0 font-mono"
+     className="bg-black lg:mt-auto text-white font-semibold p-0 font-mono"
     >
     TRY<br />
     <div className="font-bold text-3xl text-green-600 tracking-tight">TAX CODE SEARCH</div>
-    <div className="h-screen flex flex-col text-white items-center justify-center">
+    <div className="-mt-28 lg:mt-auto h-screen flex flex-col text-white items-center justify-center">
         <form
         action=""
         ref={form}
-        className="contactForm text-black"
+        className=" text-black"
         initial={{ x: "-10vw", opacity: 0 }}
         animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -85,10 +88,10 @@ const Search = () => {
         >
       <div className="border border-solid p-5 -mt-16">
       <div className="text-red-500 flex justify-start ml-2">{message}</div>
-        <div className="p-2 flex flex-row justify-center">
+        <div className="p-2 lg:flex lg:flex-row justify-center">
           <label className="text-white mr-32 text-lg">Select Tax Code</label>
           <Select
-            className="text-black"
+            className="text-black mt-2 lg:mt-auto"
             onChange={(selectedOption) => handleChange("code", selectedOption.value)}
             styles={{
               control: (baseStyles, state) => ({
@@ -104,10 +107,10 @@ const Search = () => {
           
           />
           </div>
-          <div className="p-3  flex flex-row">
+          <div className="p-3  lg:flex lg:flex-row">
           <label className="text-white mr-32 text-lg">Select Section</label>
           <Select
-            className="text-black ml-2"
+            className="text-black mt-2 lg:mt-auto lg:ml-2"
             onChange={(selectedOption) => handleChange("section", selectedOption.value)}
             styles={{
               control: (baseStyles, state) => ({
@@ -123,12 +126,13 @@ const Search = () => {
           
           />
         </div>
-        <button className="bg-green-400 focus:bg-green-500 p-2 mt-5 mb-5 rounded-lg w-32">Search</button>
-        <button className="bg-red-500 focus:bg-green-500 p-2 mt-5 mb-5 rounded-lg w-32 ml-5" onClick={goBack}>Back</button>
+        <button className="bg-green-400 focus:bg-green-500 p-2 mt-10 lg:mt-5 mb-5 h-14 lg:h-auto rounded-lg w-32">Search</button>
+        <button className="bg-red-500 focus:bg-green-500 p-2 mt-10 lg:mt-5 mb-5 h-14 lg:h-auto rounded-lg w-32 ml-5" onClick={goBack}>Back</button>
       </div>
         </form>
     </div>
     </div>
+    
   )
 }
 

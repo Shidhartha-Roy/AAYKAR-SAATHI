@@ -61,7 +61,7 @@ const Registration = () => {
 
 
   return (
-    <div className="text-white font-semibold p-0 font-mono">
+    <div className="bg-black text-white lg:mt-auto font-semibold p-0 font-mono">
         Be a part of the Family<br />
         <div className="font-bold text-3xl text-green-600 tracking-tight">REGISTER</div>
         <div className="flex flex-row h-screen items-center justify-center  font-mono mr-10">
@@ -69,15 +69,15 @@ const Registration = () => {
           <form
           action=""
           ref={form}
-          className="contactForm text-black border border-solid flex flex-col justify-start p-5"
-          style={{width: "32rem"}}
+          className="registerForm lg:mt-auto text-black border border-solid flex flex-col justify-start p-5"
+          // style={{width: "32rem"}}
           initial={{ x: "-10vw", opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           onSubmit={handleSubmit}  
         >
           
-          <div className="formGroup">
+          <div className="registerGroup">
             <div className="text-red-500 flex justify-start ml-2">{checkEmail.message}</div>
             <div className="flex justify-start ml-2">
               <label className="text-green-400">First Name</label>
@@ -89,11 +89,11 @@ const Registration = () => {
               className="formControl"
               value={user.firstname}
               onChange={handleInputChange}
-              style={{width: "28rem", borderRadius: "10px"}}
+              // style={{width: "28rem", borderRadius: "10px"}}
               required
             />
           </div>
-          <div className="formGroup">
+          <div className="registerGroup">
           <div className="flex justify-start ml-2">
               <label className="text-green-400">Last Name</label>
             </div>
@@ -101,14 +101,14 @@ const Registration = () => {
               type="text"
               name="lastname"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px"}}
+              // style={{width: "28rem", borderRadius: "10px"}}
               value={user.lastname}
               onChange={handleInputChange}
               required
               
             />
           </div>
-          <div className="formGroup" style={{ display: "inline-block" }}>
+          <div className="registerGroup" style={{ display: "inline-block" }}>
           <div className="flex justify-start ml-2">
               <label className="text-green-400">Email</label>
             </div>
@@ -116,14 +116,14 @@ const Registration = () => {
               type="email"
               name="email"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px"}}
+              // style={{width: "28rem", borderRadius: "10px"}}
               value={user.email}
               onChange={handleInputChange}
               required
               
             />
           </div>
-          <div className="col-12 formGroup">
+          <div className="col-12 registerGroup">
           <div className="flex justify-start ml-2">
               <label className="text-green-400">Password</label>
             </div>
@@ -131,7 +131,7 @@ const Registration = () => {
               type="password"
               name="password"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px"}}
+              // style={{width: "28rem", borderRadius: "10px"}}
               value={user.password}
               onChange={handleInputChange}
               required
@@ -146,7 +146,7 @@ const Registration = () => {
               type="password"
               name="confirmPassword"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px",
+              style={{
                         borderColor: user.password !== validate.confirmPassword ? 'red' : '',
                     }}
               value={validate.confirmPassword}
