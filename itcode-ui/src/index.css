@@ -163,6 +163,25 @@ textarea {
   margin-top: -6rem;
 }
 
+.closeNav{
+  visibility: hidden;
+}
+.navbar{
+  background-color: black;
+  margin-top: 0px;
+  border-bottom: none;
+}
+.navItem{
+  padding: auto;
+}
+.navItem:hover{
+  --tw-text-opacity: 1;
+    color: rgb(34 197 94 / var(--tw-text-opacity));
+    
+}
+
+
+
 @media (max-width: 460px) {
 
   .serviceCard{
@@ -174,7 +193,7 @@ textarea {
   }
   .routes{
     margin-top:-3vh!important ;
-    margin-left: 15vh;
+    margin-left: 8vh;
   }
 
   .contactForm{
@@ -273,6 +292,34 @@ textarea {
   .description{
     margin-top: -15rem;
   }
+  .aaykarPhoto{
+    visibility: hidden;
+  }
+
+  .closeNav {
+    margin-left: 2rem;
+    visibility: visible;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+
+  
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: -10px;
+      
+    }
+    
+    
+    .navItem{
+      padding-left: 0.5rem;
+    }
+    .navItem.closed{
+      visibility: hidden;
+    }
   
 }
 

@@ -13,7 +13,7 @@ const About = () => {
 
   return (
     <div
-     className="aboutTitle bg-black mt-2 lg:mt-auto text-white font-semibold p-0 font-mono"
+     className="aboutTitle bg-black lg:mt-auto text-white font-semibold p-0 font-mono"
      
      >
     ABOUT<br />

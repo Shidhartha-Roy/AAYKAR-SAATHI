@@ -4,12 +4,17 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Modal from 'react-modal'
 import close from "../images/close.svg" 
+import open from "../images/open.svg"
 import axios from 'axios';
 
 const Navbar = () => {
     const [ activeLink, setActiveLink] = useState("");
 
     const [loginMsg, setLoginMsg] = useState("Login");
+
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    
+    const [logoutModal, setLogoutModal] = useState(false);
 
     const navigate = useNavigate();
 
@@ -36,18 +41,23 @@ const Navbar = () => {
 
 
 
-  const [logoutModal, setLogoutModal] = useState(false);
 
   const handleOpenLogoutModal = () =>{
+    setIsNavOpen(!isNavOpen);
     if(loginMsg === "Logout"){
       setLogoutModal(true)
     }
   }
   
   const handleCloseLogoutModal = () =>{
-    setLogoutModal(false)
+    
     navigate("/services")
   };
+
+  const handleCloseNavbar = () =>{
+    setIsNavOpen(!isNavOpen);
+    
+  }
   
   const handleLogout = () =>{
     Cookies.remove("authToken");
@@ -70,30 +80,41 @@ const Navbar = () => {
       setActiveLink(currentPath);
     }, []);
 
+    
+
 
   return (
-    <nav className="sticky top-0 bg-black">
+    <nav className="navbar">
       <div className="max-w-screen flex flex-wrap font-mono justify-between mx-auto p-4">
 
         <NavLink to="/" className="flex ml-2">
-          <img src={logo} className="h-8 mr-3" alt="Aaykar Saathi Logo" />
+          <img src={logo} className="h-8 -ml-4 lg:mr-3" alt="Aaykar Saathi Logo" />
           <span className="brand self-center text-2xl font-semibold whitespace-nowrap  dark:text-green-500">AAYKAR SAATHI</span>
         </NavLink>
         
-        <div className="routes mr-10 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
+        <div className="routes lg:-mr-5 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
          
-            <NavLink to="/" activeclassname="active" className="hover:text-green-500">
+            <NavLink to="/" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               Home
             </NavLink>
-            <NavLink to="/about" activeclassname="active" className="hover:text-green-500">
+            <NavLink to="/about" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               About
             </NavLink>
-            <NavLink to="/contact" activeclassname="active" className="hover:text-green-500">
+            <NavLink to="/contact" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               Contact
             </NavLink>
-            <NavLink to="/login" activeclassname="active" className="hover:text-green-500" onClick={handleOpenLogoutModal}>
+            <NavLink to="/login" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleOpenLogoutModal} >
               {loginMsg}
             </NavLink>
+            
+            <button className="dropdown-toggle" onClick={handleCloseNavbar}>
+        {isNavOpen ? (
+          <img src={close} className="closeNav h-5 cursor-pointer -mt-1 hover:filter: brightness-100" alt="hamburger-closing"/>
+        ) : (
+          <img src={open} className="closeNav h-5 cursor-pointer -mt-1 hover:filter: brightness-100" alt="hamburger-opening"/>
+        )}
+      </button>
+            
         </div>
         <Modal
         isOpen={logoutModal}

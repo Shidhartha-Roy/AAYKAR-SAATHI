@@ -27,7 +27,7 @@ const Home = () => {
 
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="bg-black h-screen flex flex-col">
     
       <motion.div 
       ref={ref}
@@ -37,7 +37,7 @@ const Home = () => {
       className="text-green-200 font-extrabold font-mono tracking tracking-wider mt-40 max-w-xl" style={{textAlign: "left"}}>
       
         <div className="text-6xl pl-5 text-green-400" >
-     WELCCOME TO, AAYKAR SAATHI:
+     WELCCOME TO,AAYKAR SAATHI:
       </div>
       <br /> 
       <div className=" text-sm pl-5 max-w-lg text-green-100">
@@ -55,7 +55,7 @@ const Home = () => {
       transition={{ duration: 0.6, ease: "easeInOut" }}
       
       className="flex justify-end mr-10 -mt-80">
-        <img src={landing} className="max-w-xl" alt='Landing Page'/>
+        <img src={landing} className="aaykarPhoto max-w-xl" alt='Landing Page'/>
       </motion.div>
       <motion.div 
       ref={ref}

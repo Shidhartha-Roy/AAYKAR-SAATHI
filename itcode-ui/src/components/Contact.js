@@ -72,7 +72,7 @@ const Contact = () => {
 
   return (
     <div
-     className="email bg-black mt-2 lg:mt-auto text-white font-semibold p-0 font-mono"
+     className="email bg-black lg:mt-auto text-white font-semibold p-0 font-mono"
      
      >
     CONTACT<br />
