@@ -72,7 +72,7 @@ const Contact = () => {
 
   return (
     <div
-     className="email bg-black lg:mt-auto text-white font-semibold p-0 font-mono"
+     className="email bg-black text-white font-semibold p-0 font-mono"
      
      >
     CONTACT<br />
@@ -143,7 +143,7 @@ const Contact = () => {
       </div>
     </form>
     </div>
-    <div className="flex items-center text-white mt-32 lg:-mt-16 lg:mr-24 text-2xl">
+    <div className="flex items-center text-white mt-32 lg:-mt-16 lg:mr-32 text-2xl">
       <ContactInfo name="Shidhartha Roy" location="Guwahati, Assam, India" email="sidroy192@gmail.com"/>
     </div>
     </div>

@@ -27,7 +27,7 @@ const Home = () => {
 
 
   return (
-    <div className="bg-black h-screen flex flex-col">
+    <div className="bg-black h-screen flex flex-col -mt-1">
     
       <motion.div 
       ref={ref}

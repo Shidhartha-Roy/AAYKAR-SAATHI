@@ -84,7 +84,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="navbar">
+    <nav className="sticky bg-black top-0 h-14">
       <div className="max-w-screen flex flex-wrap font-mono justify-between mx-auto p-4">
 
         <NavLink to="/" className="flex ml-2">
@@ -92,18 +92,18 @@ const Navbar = () => {
           <span className="brand self-center text-2xl font-semibold whitespace-nowrap  dark:text-green-500">AAYKAR SAATHI</span>
         </NavLink>
         
-        <div className="routes lg:-mr-5 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
+        <div className="routes ml-5 text-white font-semibold flex md:space-x-8 pl-3 text-lg">
          
-            <NavLink to="/" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
+            <NavLink to="/" id="Home" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               Home
             </NavLink>
-            <NavLink to="/about" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
+            <NavLink to="/about" id="about" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               About
             </NavLink>
-            <NavLink to="/contact" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
+            <NavLink to="/contact" id="contact" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleCloseNavbar}>
               Contact
             </NavLink>
-            <NavLink to="/login" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleOpenLogoutModal} >
+            <NavLink to="/login" id="login" activeclassname="active" className={`navItem ${isNavOpen ? "open" : "closed"}`} onClick={handleOpenLogoutModal} >
               {loginMsg}
             </NavLink>
             

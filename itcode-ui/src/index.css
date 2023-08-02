@@ -166,11 +166,7 @@ textarea {
 .closeNav{
   visibility: hidden;
 }
-.navbar{
-  background-color: black;
-  margin-top: 0px;
-  border-bottom: none;
-}
+
 .navItem{
   padding: auto;
 }
@@ -179,10 +175,14 @@ textarea {
     color: rgb(34 197 94 / var(--tw-text-opacity));
     
 }
+.routes{
+  position: fixed;
+  margin-left: 70rem
+}
 
 
 
-@media (max-width: 460px) {
+@media (max-width: 640px) {
 
   .serviceCard{
     width: 25rem;
@@ -192,9 +192,13 @@ textarea {
     visibility: hidden;
   }
   .routes{
-    margin-top:-3vh!important ;
+    position: relative;
+    margin-top:-4vh;
     margin-left: 8vh;
+    
   }
+  
+  
 
   .contactForm{
     width: 23rem;
@@ -314,11 +318,15 @@ textarea {
     }
     
     
-    .navItem{
-      padding-left: 0.5rem;
+    .navItem.open{
+      padding-left: 0.6rem;
+      opacity: 1;
+      transition: opacity 0.5s ease;
     }
     .navItem.closed{
-      visibility: hidden;
+      padding-left: 0.4rem;
+      opacity: 0;
+      pointer-events: none;
     }
   
 }
