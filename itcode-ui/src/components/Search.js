@@ -19,12 +19,12 @@ const Search = () => {
       section: "",
     })
 
-    // useEffect(() => {
-    //   const token = Cookies.get("authToken");
-    //   if(!token){
-    //     navigate("/login");
-    //   }
-    // }, [])
+    useEffect(() => {
+      const token = Cookies.get("authToken");
+      if(!token){
+        navigate("/login");
+      }
+    }, [])
 
     const [message, setMessage] = useState("")
 

@@ -45,7 +45,7 @@ const ResultForm = () => {
     
     
     return (
-        <div className="text-white font-semibold p-0 font-mono">
+        <div className="bg-black text-white font-semibold p-0 font-mono">
         Here are your requested<br />
         <div className="font-bold text-3xl text-green-600 tracking-tight">RESULTS</div>
         <div className="flex flex-row h-screen items-center justify-center  font-mono mr-10">
@@ -53,8 +53,8 @@ const ResultForm = () => {
           <form
           action=""
           ref={form}
-          className="contactForm text-black border border-solid flex flex-col justify-start p-5"
-          style={{width: "32rem"}}
+          className="registerForm text-black border border-solid flex flex-col justify-start p-5"
+          
           initial={{ x: "-10vw", opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -70,7 +70,7 @@ const ResultForm = () => {
               type="text"
               className="formControl"
               value={taxCode.id}
-              style={{width: "28rem", borderRadius: "10px"}}
+              
               id="code"
               name="req_code"
               placeholder="TAX CODE"
@@ -80,11 +80,11 @@ const ResultForm = () => {
           </div>
           <div className="formGroup">
           <div className="flex justify-start ml-2">
-              <label className="text-green-400">Tax Description</label>
+              <label className="text-green-400 -mt-5 lg:mt-auto">Tax Description</label>
             </div>
             <textarea
               className="formControl tracking-widest text-lg"
-              style={{width: "28rem", borderRadius: "10px"}}
+              
               value={taxCode.description}
               name="description"
               id="codeDescription"
@@ -96,12 +96,12 @@ const ResultForm = () => {
           </div>
           <div className="formGroup" style={{ display: "inline-block" }}>
           <div className="flex justify-start ml-2">
-              <label className="text-green-400">Documentation Link</label>
+              <label className="text-green-400 mt-5 lg:mt-auto">Documentation Link</label>
             </div>
             <input
               type="text"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px"}}
+              
               value={taxCode.doclink}
               id="link"
               name="doc_link"
@@ -117,7 +117,7 @@ const ResultForm = () => {
             <input
               type="text"
               className="formControl"
-              style={{width: "28rem", borderRadius: "10px"}}
+              
               value={taxCode.applicable}
               id="applicable"
               name="applicable_for"

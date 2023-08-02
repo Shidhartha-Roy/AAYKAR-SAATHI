@@ -21,25 +21,25 @@ const ContactInfo = ({ name, email, location }) => {
       <ul className="listInfo -mt-1">
         <li>
           <div className="personalContactInfo">
-            <div className="mediaWrap -mt-5">
+            <div className="mediaWrap -mt-5 flex flex-row lg:flex lg:flex-col">
               <h6 className="infoType font-bold text-xl font-mono">NAME</h6>
-              <span className="infoValue text-lg font-semibold"><a href="https://shidhartharoy.netlify.app/">{name}</a></span>
+              <span className="infoValue text-lg font-semibold ml-2 lg:ml-auto"><a href="https://shidhartharoy.netlify.app/">{name}</a></span>
             </div>
           </div>
         </li>
         <li>
           <div className="personalContactInfo">
-            <div className="mediaWrap -mt-5">
+            <div className="mediaWrap -mt-5 flex flex-row lg:flex lg:flex-col">
               <h6 className="infoType font-bold text-xl font-mono">LOCATION</h6>
-              <span className="infoValue text-lg font-semibold">{location}</span>
+              <span className="infoValue text-lg font-semibold ml-2 lg:ml-auto">{location}</span>
               </div>
           </div>
         </li>
         <li>
           <div className="personalContactInfo">
-            <div className="mediaWrap -mt-5">
-              <h6 className="infoType font-bold text-xl font-mono">EMAIL</h6>
-              <span className="infoValue text-lg">
+            <div className="mediaWrap -mt-5 flex flex-row lg:flex lg:flex-col">
+              <h6 className="infoType font-bold text-xl font-mono ">EMAIL</h6>
+              <span className="infoValue text-lg ml-2 lg:ml-auto">
                 <a href={`mailto:${email}`}>{email}</a>
               </span>
               </div>

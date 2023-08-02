@@ -66,7 +66,7 @@ const Login = () => {
   return (
     
       
-    <div className=" bg-black lg:mt-auto text-white font-semibold p-0 font-mono">
+    <div className=" bg-black mt-2 lg:mt-auto text-white font-semibold p-0 font-mono">
       
         Enjoy the Full Services<br />
         <div className="font-bold text-3xl text-green-600 tracking-tight">LOGIN</div>
