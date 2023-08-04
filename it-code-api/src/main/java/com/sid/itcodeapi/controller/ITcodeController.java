@@ -40,7 +40,9 @@ public class ITcodeController {
     public ResponseEntity<ItcodeModel> getItcodeById(@PathVariable String id){
         ItcodeModel itcodeModel = null;
         itcodeModel = itcodeService.getCodeById(id);
-        return ResponseEntity.ok(itcodeModel);
+            return ResponseEntity.ok(itcodeModel);
+
+
     }
 
     //Registering User API

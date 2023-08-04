@@ -50,7 +50,7 @@ const Navbar = () => {
   }
   
   const handleCloseLogoutModal = () =>{
-    
+    setLogoutModal(false);
     navigate("/services")
   };
 
@@ -60,6 +60,7 @@ const Navbar = () => {
   }
   
   const handleLogout = () =>{
+    setLogoutModal(false);
     Cookies.remove("authToken");
 
     axios.defaults.headers.common['Authorization'] = "";
@@ -70,6 +71,7 @@ const Navbar = () => {
   }
 
     useEffect(() => {
+      
       const token = Cookies.get('authToken');
       if(token){
         setLoginMsg("Logout")

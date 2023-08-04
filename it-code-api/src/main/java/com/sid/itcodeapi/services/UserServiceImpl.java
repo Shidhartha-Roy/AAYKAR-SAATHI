@@ -4,6 +4,7 @@ import com.sid.itcodeapi.entity.UserEntity;
 import com.sid.itcodeapi.model.UserModel;
 import com.sid.itcodeapi.repository.UserRepository;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -74,6 +75,17 @@ public class UserServiceImpl implements UserService{
                 .signWith(key)
                 .compact();
     }
+
+    //Verify token function --> Couldn't find the error
+
+//    @Override
+//    public Claims verifyToken(String token) {
+//        Jws<Claims> jws = Jwts.parserBuilder()
+//                .setSigningKey(Keys.secretKeyFor(SignatureAlgorithm.HS256))
+//                .build()
+//                .parseClaimsJws(token);
+//        return jws.getBody();
+//    }
 
 
 }
