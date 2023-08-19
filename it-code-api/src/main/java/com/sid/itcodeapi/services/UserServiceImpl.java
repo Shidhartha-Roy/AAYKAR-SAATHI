@@ -77,7 +77,6 @@ public class UserServiceImpl implements UserService{
     }
 
     //Verify token function --> Couldn't find the error
-
 //    @Override
 //    public Claims verifyToken(String token) {
 //        Jws<Claims> jws = Jwts.parserBuilder()

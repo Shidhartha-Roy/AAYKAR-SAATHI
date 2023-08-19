@@ -26,7 +26,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedMethods("*").allowedOrigins("http://localhost:3000")
+                        .allowedMethods("*").allowedOrigins("*")
                         .exposedHeaders("Authorization");
                 // allowedHeaders functionality causes problems
 
